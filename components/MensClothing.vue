@@ -1,12 +1,15 @@
 <template>
   <b-container>
-    <div style="padding-top: 5px">
+   <div class="route">
+      <p>Home / Clothing / Mens Clothing / All Mens Clothing</p>
+   </div>
+    <div >
       <p class="total">
         ALL Products
-        <span class="total_product">({{ userFilter.length }} products)</span>
+        <span class="total_product">({{ all.length }} products)</span>
       </p>
     </div>
-    <div>
+    <div class="filter-button">
       FILTERS :
       <b-button
         id="filterButton"
@@ -16,7 +19,7 @@
         variant="outline-secondary"
         >All Products</b-button
       >
-      &nbsp
+     
       <b-button
         id="filterButton"
         v-on:click="userFilterKey = 'filterTshirt'"
@@ -25,7 +28,7 @@
         variant="outline-secondary"
         >Tee Shirt</b-button
       >
-      &nbsp
+      
       <b-button
         id="filterButton"
         v-on:click="userFilterKey = 'filterDenim'"
@@ -34,7 +37,7 @@
         variant="outline-secondary"
         >Denim</b-button
       >
-      &nbsp
+      
       <b-button
         id="filterButton"
         v-on:click="userFilterKey = 'filterSweatshirts'"
@@ -43,7 +46,7 @@
         variant="outline-secondary"
         >Sweatshirts</b-button
       >
-      &nbsp
+     
       <b-button
         id="filterButton"
         v-on:click="userFilterKey = 'filterPoloTeeShirt'"
@@ -52,7 +55,7 @@
         variant="outline-secondary"
         >Polo Tee Shirt</b-button
       >
-      &nbsp
+     
       <b-button
         id="filterButton"
         v-on:click="userFilterKey = 'filterShirt'"
@@ -61,11 +64,12 @@
         variant="outline-secondary"
         >Shirt</b-button
       >
-      &nbsp
+    
       <div style="float: right">
+    
         <b-button
           id="filterButton"
-          v-on:click="userFilterKey = 'sortPrice'"
+         @click="userFilterKey = 'sortPrice'" 
           :class="{ active: userFilterKey == 'sortPrice' }"
           pill
           variant="outline-secondary"
@@ -74,11 +78,14 @@
       </div>
     </div>
     <b-row>
+    
       <b-card-group
         class="col-md-3 col-6 my-1"
         v-for="item in userFilter"
         :key="item.id"
+       
       >
+      
         <b-card
           :title="item.vendor"
           :sub-title="item.name"
@@ -90,13 +97,15 @@
           class="mb-1"
         >
           <div class="middle" style="display: flex">
+             
             <div
               class="text"
               style="display: flex"
               v-for="option in item.options"
               :key="option.id"
             >
-              <p @click="addToCart(item, option)">{{ option.value }}</p>
+           
+              <p v-b-tooltip.hover :title="'Add to cart ' + option.value " @click="addToCart(item, option)">{{ option.value }}</p>
             </div>
           </div>
 
@@ -292,16 +301,29 @@ export default {
 .text {
   background-color: white;
   color: black;
-  padding: 2px;
+  padding: 5px;
 }
 
-.container:hover .card:not(:hover) {
-  -webkit-filter: blur(1px);
-  -moz-filter: blur(1px);
-  filter: blur(1px);
+.text:hover {
+  background-color: white;
+  color: #ED4E08;
+  padding: 5px;
 }
 
-/* #filterButton{
-  padding-top: px;
-} */
+.filter-button{
+  padding-bottom: 40px;
+}
+
+.route{
+  padding-top: 10px;
+font-style: normal;
+font-weight: 300;
+font-size: 12px;
+line-height: 14px;
+/* identical to box height */
+
+text-transform: capitalize;
+
+color: #000000;
+}
 </style>
