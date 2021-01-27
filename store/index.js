@@ -1,5 +1,6 @@
 export const state = () => ({
   cart: [],
+  total : '',
   data: [
     {
       id: 1,
@@ -1069,15 +1070,27 @@ export const state = () => ({
 });
 
 export const mutations = {
-  ADD_CART_DATA: (state, {payload}) => {
-console.log(payload);
-    state.cart.push(payload);
+  ADD_CART_DATA: (state, payload) => {
+    if(!state.cart.some(({id}) => id === payload.id)) {
+      state.cart.push(payload)
+    }
+
+
   },
+  REMOVE_CART : (state, payload) => {
+    state.cart.splice(payload, 1);
+  },
+  EDIT_CART : (state, {payload, idx}) => {
+    state.cart[idx] = payload
+  },
+  GET_TOTAL_PRICE : (state) => {
+     
+  }
 };
 
-// export const actions = {
-//   ADD_CART_DATA({ commit }, payload) {
-//     commit("ADD_CART_DATA", {payload});
-//     // commit("ADD_CART_OPTION", option);
-//   }
-// };
+export const getters = {
+  getAllCart : state => state.cart,
+  getAllData : state => state.data,
+
+}
+

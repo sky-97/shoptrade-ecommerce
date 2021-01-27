@@ -1,5 +1,4 @@
 <template>
-
   <div class="modal" tabindex="-1" role="dialog">
     <div class="modal-dialog modal-dialog-top modal-lg" role="document">
       <div class="modal-content">
@@ -7,7 +6,8 @@
           <div class="modal-text">
             <div>
               <h3 class="text-center">Add this to cart?</h3>
-              <b-row style="padding: 5px">
+              {{component}}
+              <!-- <b-row style="padding: 5px">
                 <b-col cols="4">
                   <img :src="component.image_src[0]" alt="" />
                 </b-col>
@@ -21,11 +21,11 @@
 
                   <h4 class="product-price">Price ${{ component.price }}</h4>
                 </b-col>
-              </b-row>
+              </b-row> -->
 
               <div class="button-wrapper">
                 <b-button
-                  v-on:click="sendData"
+                 v-on:click="sendData"
                   squared
                   style="
                     background-color: coral;
@@ -49,7 +49,6 @@
                   "
                   >Cancel</b-button
                 >
-               
               </div>
             </div>
           </div>
@@ -60,39 +59,27 @@
 </template>
 
 <script>
-import CartPage from "./CartPage";
+
 
 export default {
-  name: "AddCartModal",
+  name: "EditCart",
   components: {
-    CartPage,
-  },
-  data() {
-    return {
-      isSuccess: false,
-    };
+      
   },
   props: {
     component: {
       type: Object,
       required: true,
     },
-    option: {
-      type: String,
-      required: false,
-    },
-  },
-  methods: {
-    sendData() {
-      this.component.selectedoption = this.option;
 
-      this.$store.commit("ADD_CART_DATA", this.component);
-      this.$emit("close");
-    },
-    closeAlert() {
-      this.isSuccess = !this.isSuccess;
-    },
   },
+  methods : {
+      sendData () {
+this.component.selectedoption = this.option
+
+          this.$store.commit('ADD_CART_DATA',  this.component)
+      }
+  }
 };
 </script>
 
@@ -144,10 +131,5 @@ img {
   text-transform: capitalize;
 
   color: #878787;
-}
-
-.close-img {
-  float: right;
-  width: 20px
 }
 </style>

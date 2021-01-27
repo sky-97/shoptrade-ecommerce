@@ -6,6 +6,9 @@
 <script>
 import CartPage from '../../components/CartPage'
 export default {
+       head: {
+     title: 'cart page',
+  },
     components : {
         CartPage
     }
