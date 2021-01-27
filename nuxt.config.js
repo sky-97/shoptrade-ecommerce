@@ -19,6 +19,7 @@ export default {
     ]
   },
   target: 'static',
+  ssr: false,
   router: {
     base: '/shoptrade-ecommerce/'
   }, // default is 'server'
