@@ -1,4 +1,8 @@
 export default {
+  mode: 'spa',
+  router: {
+     base: '/shoptrade-ecommerce/'
+   },
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
     title: 'ecommerce',
@@ -18,11 +22,6 @@ export default {
       }
     ]
   },
-  target: 'static',
-  ssr: false,
-  router: {
-    base: '/shoptrade-ecommerce/'
-  }, // default is 'server'
 
   // Global CSS: https://go.nuxtjs.dev/config-css
   css: [
