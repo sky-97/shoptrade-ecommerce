@@ -18,7 +18,10 @@ export default {
       }
     ]
   },
-  target: 'static', // default is 'server'
+  target: 'static',
+  router: {
+    base: '/shoptrade-ecommerce/'
+  }, // default is 'server'
 
   // Global CSS: https://go.nuxtjs.dev/config-css
   css: [
