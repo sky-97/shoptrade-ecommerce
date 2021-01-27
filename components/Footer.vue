@@ -19,7 +19,8 @@ export default {
 <style scoped>
 .fluid-container {
   background-color: #33383b !important;
-
+position: fixed; bottom: 0;
+width: 100%;
   padding: 20px;
 }
 

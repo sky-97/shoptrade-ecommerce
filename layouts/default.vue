@@ -2,7 +2,6 @@
   <div>
     <Navbar />
     <Nuxt />
-  <Footer />
   </div>
 </template>
 <script>
@@ -19,6 +18,7 @@ export default {
 <style>
 html {
 font-family: 'Roboto', sans-serif;
+ overflow-y: scroll; 
 }
 body
 {
