@@ -25,13 +25,21 @@
 
       <!-- Right aligned nav items -->
       <b-navbar-nav class="ml-auto">
- <b-nav-form>
-          <b-form-input size="sm" class="mr-sm-2" placeholder="Search"></b-form-input>
-          <b-button size="sm" class="my-2 my-sm-0" type="submit">Search</b-button>
-        </b-nav-form>
-        <b-nav-item href="#" >user</b-nav-item>
-        <!-- <b-nav-item href="#" ><img src="~/assets/navbar/user.png" style="width:10%" alt=""></b-nav-item> -->
-        <b-nav-item href="/cart" >cart</b-nav-item>
+     <ul class="nav navbar-nav ml-auto w-100 justify-content-end">
+            <li class="nav-item">
+                <a class="nav-link" href="#">Search <img src="~/assets/loupe.png" style="width:30px" alt=""></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#"><img src="~/assets/navbar/user.png" style="width:30px" alt=""></a>
+            </li>
+            <li class="nav-item" v-if="cartItems <= 0 || cartItems === undefined">
+                <a class="nav-link" href="/cart"><img src="~/assets/navbar/empty-cart.svg" style="width:30px" alt=""></a>
+            </li>
+            <li class="nav-item" v-else>
+                <a class="nav-link" href="/cart"><img src="~/assets/navbar/cart.png" style="width:30px" alt=""></a>
+            </li>
+        </ul>
+
 
       </b-navbar-nav>
     </b-collapse>
@@ -42,6 +50,16 @@
 <script>
 export default {
    name: "Navbar",
+   
+data(){
+     return{
+       cartItems : ''
+     }
+   },
+    mounted() {
+    this.cartItems = this.$store.getters.getAllCart;
+
+  },
     
 }
 </script>
