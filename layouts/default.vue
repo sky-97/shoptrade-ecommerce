@@ -1,16 +1,14 @@
 <template>
   <div>
-    <Navbar />
+    <NavbarHeader />
     <Nuxt />
   </div>
 </template>
 <script>
-import Navbar from '../components/Navbar'
-import Footer from '../components/Footer'
+import NavbarHeader from '../components/NavbarHeader.vue'
 export default {
   components : {
-    Navbar,
-    Footer
+    NavbarHeader,
   }
 }
 </script>

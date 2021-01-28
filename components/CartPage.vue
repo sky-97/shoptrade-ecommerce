@@ -8,6 +8,7 @@
     </div>
     </div>
     <div v-else>
+       <p>Number of Product {{ cartItems.length }}</p>
       <p>Total Amount : $ {{getTotalAmount()}}</p>
       <p>Total Amount Saved: $ {{getTotalAmountSaved()}}</p>
 
